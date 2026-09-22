@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="英盛网在线学习登录入口，提供企业管理培训、职业发展课程及在线学习平台访问服务。">
+    <meta name="keywords" content="英盛网在线学习登录,英盛网,在线学习,企业培训">
+    <title>英盛网在线学习登录-企业专业培训与个人成长平台</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-hover: #004494;
+            --secondary-color: #f8f9fa;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 布局容器 */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: #fff;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-login-nav {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-login-nav:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: var(--primary-color);
+            padding: 12px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* 登录卡片区域 */
+        .login-section {
+            padding: 60px 0;
+            flex: 1;
+        }
+
+        .login-card-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 60px;
+        }
+
+        .login-card {
+            background: #fff;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .login-header p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .forgot-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 24px 0;
+            color: var(--text-gray);
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .divider span {
+            padding: 0 10px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+
+        .social-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* 侧边栏信息 */
+        .info-sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 15px;
+            color: var(--text-gray);
+        }
+
+        .info-list li::before {
+            content: '✓';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .tips-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--primary-color);
+            padding: 16px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-size: 14px;
+            color: #0d47a1;
+        }
+
+        /* 课程展示区 */
+        .course-section {
+            background-color: #fff;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-gray);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .course-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+            background: #fff;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .course-img {
+            width: 100%;
+            height: 160px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-tag {
+            font-size: 12px;
+            color: var(--primary-color);
+            background: rgba(0, 86, 179, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .course-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+            height: 42px;
+            overflow: hidden;
+        }
+
+        .course-meta {
+            font-size: 13px;
+            color: var(--text-gray);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #888;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 900px) {
+            .login-card-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-sidebar {
+                width: 100%;
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                英盛网
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">企业管理</a></li>
+                <li><a href="#">职业发展</a></li>
+                <li><a href="#">课程中心</a></li>
+                <li><a href="#">讲师介绍</a></li>
+            </ul>
+            <a href="#login-area" class="btn-login-nav">立即登录</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>赋能企业成长，成就个人未来</h1>
+                <p>英盛网为您提供海量优质的企业管理培训课程与在线学习资源，支持随时随地高效学习。</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary">浏览课程</a>
+                    <a href="#" class="btn-outline">免费试听</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-section" id="login-area">
+            <div class="container">
+                <div class="login-card-wrapper">
+                    <!-- 登录表单区域 -->
+                    <div class="login-card">
+                        <div class="login-header">
+                            <h2>欢迎登录</h2>
+                            <p>请输入您的账号信息以继续学习</p>
+                        </div>
+                        <form action="#" method="post" onsubmit="event.preventDefault(); alert('演示页面：登录功能需连接后端接口');">
+                            <div class="form-group">
+                                <label for="username" class="form-label">账号 / 手机号 / 邮箱</label>
+                                <input type="text" id="username" class="form-input" placeholder="请输入您的账号" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-label">密码</label>
+                                <input type="password" id="password" class="form-input" placeholder="请输入您的密码" required>
+                            </div>
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> 记住我
+                                </label>
+                                <a href="#" class="forgot-link">忘记密码？</a>
+                            </div>
+                            <button type="submit" class="btn-submit">登 录</button>
+                        </form>
+
+                        <div class="divider">
+                            <span>或通过以下方式登录</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button class="social-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
+                                微信
+                            </button>
+                            <button class="social-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
+                                企业微信
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 侧边栏信息 -->
+                    <aside class="info-sidebar">
+                        <div class="info-card">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                登录指引
+                            </h3>
+                            <ul class="info-list">
+                                <li>如果您是机构管理员，请使用机构统一分配的账号登录。</li>
+                                <li>如果您是个人学员，请使用注册的手机号或邮箱登录。</li>
+                                <li>首次登录请确保网络连接稳定。</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                                核心课程
+                            </h3>
+                            <ul class="info-list">
+                                <li>高效能团队管理实战</li>
+                                <li>数字化营销与增长策略</li>
+                                <li>领导力与组织行为学</li>
+                            </ul>
+                        </div>
+                        <div class="tips-box">
+                            <strong>温馨提示：</strong><br>
+                            如遇登录问题，请联系客服热线：400-123-4567，或发送邮件至 support@yingsheng.com。
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- 课程推荐区域 -->
+        <section class="course-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精选热门课程</h2>
+                    <p>涵盖企业管理、领导力、市场营销等多个领域，助您职场进阶</p>
+                </div>
+                <div class="course-grid">
+                    <article class="course-card">
+                        <img src="https://picsum.photos/seed/course1/400/250" alt="课程封面" class="course-img">
+                        <div class="course-content">
+                            <span class="course-tag">管理实战</span>
+                            <h3 class="course-title">从管理者到领导者：高阶领导力修炼</h3>
+                            <div class="course-meta">
+                                <span>128 课时</span>
+                                <span>¥ 999</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="course-card">
+                        <img src="https://picsum.photos/seed/course2/400/250" alt="课程封面" class="course-img">
+                        <div class="course-content">
+                            <span class="course-tag">人力资源</span>
+                            <h3 class="course-title">企业薪酬绩效体系设计与优化</h3>
+                            <div class="course-meta">
+                                <span>96 课时</span>
+                                <span>¥ 899</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="course-card">
+                        <img src="https://picsum.photos/seed/course3/400/250" alt="课程封面" class="course-img">
+                        <div class="course-content">
+                            <span class="course-tag">市场营销</span>
+                            <h3 class="course-title">私域流量运营与用户增长实战</h3>
+                            <div class="course-meta">
+                                <span>84 课时</span>
+                                <span>¥ 799</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="course-card">
+                        <img src="https://picsum.photos/seed/course4/400/250" alt="课程封面" class="course-img">
+                        <div class="course-content">
+                            <span class="course-tag">财务金融</span>
+                            <h3 class="course-title">非财务人员的财务管理必修课</h3>
+                            <div class="course-meta">
+                                <span>72 课时</span>
+                                <span>¥ 699</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>英盛网</h3>
+                    <p>专注于为企业和个人提供专业的在线学习解决方案。我们致力于通过优质的课程内容，帮助组织提升人才竞争力，助力个人实现职业梦想。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">师资力量</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">登录帮助</a></li>
+                        <li><a href="#">学习指南</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul class="footer-links">
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：support@yingsheng.com</li>
+                        <li>地址：深圳市南山区科技园</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 英盛网 版权所有 | 仅供演示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
